@@ -35,10 +35,14 @@ busA =configureBus({
   lng:listaRutas.rutas[rutaIdx].estaciones[0].lng,
   nombre:"lata 1",
 });
+
+
+setTimeout(function(){
 busA.transition(new google.maps.LatLng({
         lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
         lng:listaRutas.rutas[rutaIdx].puntos[5].lng
       }));
+},5000);
 });
 
 
