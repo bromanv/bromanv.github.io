@@ -48,7 +48,7 @@ function dibujarPin(ruta,rutaLinea) {
       }),
       map: map,
       title: estacion.nombre,
-      draggable: true,
+      draggable: false,
       icon: pinImage,
       shadow: pinShadow
     });
@@ -64,7 +64,7 @@ function dibujarRuta(ruta) {
     strokeWeight: ruta.strokeWeight,
     fillColor: ruta.color,
     fillOpacity: 1,
-    editable: true,
+    editable: false,
     zIndex: 100
   });
 
