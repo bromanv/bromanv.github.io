@@ -132,6 +132,7 @@ function moveMarker(){
     this.setPosition(latlng);
     if(this.i!=this.numDeltas){
         this.i++;
-        setTimeout(function(){this.moveMarker();}, this.delay);
+        var self=this;
+        self.set = setTimeout(function(){this.moveMarker();}, this.delay);
     }
 }
