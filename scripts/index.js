@@ -42,7 +42,7 @@ busA.transition(new google.maps.LatLng({
         lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
         lng:listaRutas.rutas[rutaIdx].puntos[5].lng
       }));
-},5000);
+},15000);
 });
 
 
@@ -117,19 +117,19 @@ function configureBus(bus)
     marker.i = 0;
     marker.deltaLat=0;
     marker.deltaLng=0;
-    marker.moveMarker= moveMarker;
-    marker.transition= transition;
+    //marker.moveMarker= moveMarker;
+    //marker.transition= transition;
     return marker;
 }
 
 /**********************/
-function transition(result){
+google.maps.MarkerImage.prototype.transition = function (result){
     this.i = 0;
     this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
     this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
     this.moveMarker();
 }
-function moveMarker(){
+google.maps.MarkerImage.prototype.moveMarker = function (){
     var lat = this.position.lat() + this.deltaLat;
     var lon = this.position.lng() + this.deltaLng;
     var latlng = new google.maps.LatLng(lat,lon);
