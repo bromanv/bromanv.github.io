@@ -121,8 +121,8 @@ function configureBus(bus)
 /**********************/
 function transition(result){
     this.i = 0;
-    this.deltaLat = (result.lat() - this.position.lat())/numDeltas;
-    this.deltaLng = (result.lng() - this.position.lng())/numDeltas;
+    this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
+    this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
     this.moveMarker();
 }
 function moveMarker(){
