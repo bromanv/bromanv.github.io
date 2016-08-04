@@ -125,6 +125,7 @@ function configureBus(bus)
 google.maps.Marker.prototype.transition = function (result){
     
     result.tsMark =Math.floor(Date.now() / 1000);
+    result.tsMark=result.tsMark + ( this.funqueue.length % 2 ==0 ? this.funqueue.length/2 : 0);
     this.funqueue.push(result);
     if(this.funqueue.length==1)
     {
