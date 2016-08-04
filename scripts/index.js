@@ -11,6 +11,7 @@ $(document).ready(function() {
     zoom: 14,
     streetViewControl: false,
   };
+  $("#map_canvas").height ($("body").height()-20);
   bounds = new google.maps.LatLngBounds();
   map = new google.maps.Map(document.getElementById("map_canvas"), mpConfig);
   pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
