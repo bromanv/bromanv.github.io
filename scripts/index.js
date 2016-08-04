@@ -133,7 +133,7 @@ google.maps.Marker.prototype.moveMarker = function (){
     var lat = this.position.lat() + this.deltaLat;
     var lon = this.position.lng() + this.deltaLng;
     var latlng = new google.maps.LatLng(lat,lon);
-    setPosition(latlng);
+    this.setPosition(latlng);
     if(this.i!=this.numDeltas){
         this.i++;
         var self=this;
