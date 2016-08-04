@@ -133,10 +133,10 @@ google.maps.Marker.prototype.transition = function (result){
     }
 }
 google.maps.Marker.prototype.moveMarker = function (){
-    var lat = this.position.lat() + this.deltaLat;
-    var lon = this.position.lng() + this.deltaLng;
-    var latlng = new google.maps.LatLng(lat,lon);
-    this.setPosition(latlng);
+    var lat1 = this.position.lat() + this.deltaLat;
+    var lon1 = this.position.lng() + this.deltaLng;
+    var latlng1 = new google.maps.LatLng(lat1,lon1);
+    this.setPosition(latlng1);
     if(this.i!=this.numDeltas){
         this.i++;
         var self=this;
