@@ -124,6 +124,7 @@ function configureBus(bus)
 /**********************/
 google.maps.Marker.prototype.transition = function (result){
     
+    result.tsMark =Math.floor(Date.now() / 1000);
     this.funqueue.push(result);
     if(this.funqueue.length==1)
     {
@@ -133,8 +134,17 @@ google.maps.Marker.prototype.transition = function (result){
 google.maps.Marker.prototype.transitionProcess = function (result)
 {
     this.i = 0;
-    this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
-    this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
+    if (Math.abs(result.tsMark -Math.floor(Date.now() / 1000))<5)
+    {
+      this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
+      this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
+    }
+    else
+    {
+        this.deltaLat = (result.lat() - this.position.lat());
+        this.deltaLng = (result.lng() - this.position.lng());
+        this.i = this.numDeltas;
+    }
     this.moveMarker();
 }
 google.maps.Marker.prototype.moveMarker = function (){
