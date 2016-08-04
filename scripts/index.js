@@ -151,6 +151,6 @@ google.maps.Marker.prototype.moveMarker = function (){
     {
       this.funqueue.shift();
       if(this.funqueue.length>0)
-        this.this.transitionProcess(this.funqueue[0]);
+        this.transitionProcess(this.funqueue[0]);
     }
 }
