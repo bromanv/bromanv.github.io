@@ -36,13 +36,12 @@ busA =configureBus({
   nombre:"lata 1",
 });
 
-
-setTimeout(function(){
-busA.transition(new google.maps.LatLng({
-        lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
-        lng:listaRutas.rutas[rutaIdx].puntos[5].lng
+for(r in listaRutas.rutas[rutaIdx].puntos)
+  busA.transition(new google.maps.LatLng({
+        lat:listaRutas.rutas[rutaIdx].puntos[r].lat,
+        lng:listaRutas.rutas[rutaIdx].puntos[r].lng
       }));
-},15000);
+      
 });
 
 
