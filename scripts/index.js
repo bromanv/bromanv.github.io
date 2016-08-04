@@ -123,13 +123,13 @@ function configureBus(bus)
 }
 
 /**********************/
-google.maps.MarkerImage.prototype.transition = function (result){
+google.maps.Marker.prototype.transition = function (result){
     this.i = 0;
     this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
     this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
     this.moveMarker();
 }
-google.maps.MarkerImage.prototype.moveMarker = function (){
+google.maps.Marker.prototype.moveMarker = function (){
     var lat = this.position.lat() + this.deltaLat;
     var lon = this.position.lng() + this.deltaLng;
     var latlng = new google.maps.LatLng(lat,lon);
