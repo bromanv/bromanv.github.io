@@ -36,8 +36,8 @@ busA =configureBus({
   nombre:"lata 1",
 });
 busA.transition(new google.maps.LatLng({
-        lat: lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
-        lng: lat:listaRutas.rutas[rutaIdx].puntos[5].lng
+        lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
+        lng:listaRutas.rutas[rutaIdx].puntos[5].lng
       }));
 });
 
