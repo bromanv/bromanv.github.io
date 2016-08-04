@@ -3,7 +3,7 @@ var l = [];
 var markers= [];
 var bounds;
 var pinShadow;
-
+var busA;
 $(document).ready(function() {
   var mpConfig = {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -29,7 +29,16 @@ $(document).ready(function() {
     markers=markers;
     debugger;
   });
-
+busA =configureBus({
+  pinColor:listaRutas.rutas[rutaIdx].pinColor, 
+  lat:listaRutas.rutas[rutaIdx].estaciones[0].lat,
+  lng: lat:listaRutas.rutas[rutaIdx].estaciones[0].lng,
+  nombre:"lata 1",
+});
+busA.transition(new google.maps.LatLng({
+        lat: lat:listaRutas.rutas[rutaIdx].puntos[5].lat,
+        lng: lat:listaRutas.rutas[rutaIdx].puntos[5].lng
+      }));
 });
 
 
@@ -53,9 +62,11 @@ function dibujarPin(ruta,rutaLinea) {
       icon: pinImage,
       shadow: pinShadow
     });
+   
     rutaLinea.markers.push(marker);
   }
 }
+
 function dibujarRuta(ruta) {
   var rutaLinea = new google.maps.Polyline({
     path: ruta.puntos,
@@ -77,4 +88,50 @@ function dibujarRuta(ruta) {
       lng: ruta.puntos[punto].lng
     }));
   dibujarPin(ruta,rutaLinea);
+}
+function configureBus(bus)
+{
+   var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|" + bus.pinColor,
+    new google.maps.Size(21, 34),
+    new google.maps.Point(0, 0),
+    new google.maps.Point(10, 34));
+ 
+   var marker = new google.maps.Marker({
+      position: new google.maps.LatLng({
+        lat: bus.lat,
+        lng: bus.lng
+      }),
+      map: map,
+      title: bus.nombre,
+      draggable: false,
+      icon: pinImage,
+      shadow: pinShadow
+    });
+    
+    marker.numDeltas = 100;
+    marker.delay = 10; //milliseconds
+    marker.i = 0;
+    marker.deltaLat=0;
+    marker.deltaLng=0;
+    marker.moveMarker= moveMarker;
+    marker.transition= transition;
+    return marker;
+}
+
+/**********************/
+function transition(result){
+    this.i = 0;
+    this.deltaLat = (result.lat() - this.position.lat())/numDeltas;
+    this.deltaLng = (result.lng() - this.position.lng())/numDeltas;
+    this.moveMarker();
+}
+function moveMarker(){
+    var lat = this.position.lat() + this.deltaLat;
+    var lon = this.position.lng() + this.deltaLng;
+    var latlng = new google.maps.LatLng(lat,lon);
+    this.setPosition(latlng);
+    if(this.i!=this.numDeltas){
+        this.i++;
+        setTimeout(this.moveMarker, this.delay);
+    }
 }
