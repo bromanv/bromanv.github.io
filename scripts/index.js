@@ -133,6 +133,6 @@ function moveMarker(){
     if(this.i!=this.numDeltas){
         this.i++;
         var self=this;
-        self.set = setTimeout(function(){this.moveMarker();}, this.delay);
+        self.set = setTimeout(function(){self.moveMarker();}, self.delay);
     }
 }
