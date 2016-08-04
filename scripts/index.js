@@ -117,8 +117,7 @@ function configureBus(bus)
     marker.i = 0;
     marker.deltaLat=0;
     marker.deltaLng=0;
-    //marker.moveMarker= moveMarker;
-    //marker.transition= transition;
+    marker.funqueue = [];
     return marker;
 }
 
@@ -127,7 +126,11 @@ google.maps.Marker.prototype.transition = function (result){
     this.i = 0;
     this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
     this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
-    this.moveMarker();
+    this.funqueue.push(this.moveMarker);
+    if(this.funqueue.length==1)
+    {
+      (this.funqueue[0])();
+    }
 }
 google.maps.Marker.prototype.moveMarker = function (){
     var lat = this.position.lat() + this.deltaLat;
@@ -138,5 +141,11 @@ google.maps.Marker.prototype.moveMarker = function (){
         this.i++;
         var self=this;
         self.ejecucionD = setTimeout(function(){self.moveMarker();}, self.delay);
+    }
+    else
+    {
+      this.funqueue.shift();
+      if(this.funqueue.length>0)
+        (this.funqueue[0]();
     }
 }
