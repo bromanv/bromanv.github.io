@@ -123,20 +123,20 @@ function configureBus(bus)
 }
 
 /**********************/
-google.maps.Marker.prototype.transition = function (result){
+google.maps.MarkerImage.prototype.transition = function (result){
     this.i = 0;
     this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
     this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
     this.moveMarker();
 }
-google.maps.Marker.prototype.moveMarker = function (){
+google.maps.MarkerImage.prototype.moveMarker = function (){
     var lat = this.position.lat() + this.deltaLat;
     var lon = this.position.lng() + this.deltaLng;
     var latlng = new google.maps.LatLng(lat,lon);
-    this.setPosition(latlng);
+    setPosition(latlng);
     if(this.i!=this.numDeltas){
         this.i++;
         var self=this;
-        self.set = setTimeout(function(){self.moveMarker();}, self.delay);
+        self.ejecucionD = setTimeout(function(){self.moveMarker();}, self.delay);
     }
 }
