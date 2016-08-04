@@ -32,7 +32,7 @@ $(document).ready(function() {
 busA =configureBus({
   pinColor:listaRutas.rutas[rutaIdx].pinColor, 
   lat:listaRutas.rutas[rutaIdx].estaciones[0].lat,
-  lng: lat:listaRutas.rutas[rutaIdx].estaciones[0].lng,
+  lng:listaRutas.rutas[rutaIdx].estaciones[0].lng,
   nombre:"lata 1",
 });
 busA.transition(new google.maps.LatLng({
