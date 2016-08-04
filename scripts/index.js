@@ -126,7 +126,7 @@ google.maps.Marker.prototype.transition = function (result){
     this.i = 0;
     this.deltaLat = (result.lat() - this.position.lat())/this.numDeltas;
     this.deltaLng = (result.lng() - this.position.lng())/this.numDeltas;
-    this.funqueue.push(this.moveMarker);
+    this.funqueue.push(function(){this.moveMarker();});
     if(this.funqueue.length==1)
     {
       (this.funqueue[0])();
