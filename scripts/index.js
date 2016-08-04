@@ -109,7 +109,8 @@ function configureBus(bus)
       title: bus.nombre,
       draggable: false,
       icon: pinImage,
-      shadow: pinShadow
+      shadow: pinShadow,
+      zIndex:100000
     });
     
     marker.numDeltas = 100;
