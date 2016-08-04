@@ -33,15 +33,16 @@ busA =configureBus({
   pinColor:listaRutas.rutas[rutaIdx].pinColor, 
   lat:listaRutas.rutas[rutaIdx].estaciones[0].lat,
   lng:listaRutas.rutas[rutaIdx].estaciones[0].lng,
-  nombre:"lata 1",
+  nombre:"lata 1"
 });
 
 for(r in listaRutas.rutas[rutaIdx].puntos)
+{
   busA.transition(new google.maps.LatLng({
         lat:listaRutas.rutas[rutaIdx].puntos[r].lat,
         lng:listaRutas.rutas[rutaIdx].puntos[r].lng
       }));
-      
+}  
 });
 
 
@@ -145,6 +146,6 @@ google.maps.Marker.prototype.moveMarker = function (){
     {
       this.funqueue.shift();
       if(this.funqueue.length>0)
-        (this.funqueue[0]();
+        (this.funqueue[0])();
     }
 }
