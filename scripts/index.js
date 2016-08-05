@@ -143,9 +143,9 @@ google.maps.Marker.prototype.transitionProcess = function (result)
     }
     else
     {
-        this.deltaLat = (result.lat() - this.position.lat());
-        this.deltaLng = (result.lng() - this.position.lng());
-        this.i = this.numDeltas;
+        this.deltaLat = (result.lat() - this.position.lat())/10;
+        this.deltaLng = (result.lng() - this.position.lng())/10;
+        this.i = this.numDeltas-10;
     }
     this.moveMarker();
 }
