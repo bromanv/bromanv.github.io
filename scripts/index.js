@@ -130,7 +130,7 @@ function configureBus(bus) {
 
 function showUserLocation(point) {
     if (usuarioMarker == null) {
-        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|" + bus.pinColor,
+        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|00FF00",
             new google.maps.Size(21, 34),
             new google.maps.Point(0, 0),
             new google.maps.Point(10, 34));
