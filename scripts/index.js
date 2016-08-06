@@ -128,7 +128,7 @@ function configureBus(bus) {
     return marker;
 }
 
-function showUserLocation(point) {
+function showUserLocation(position) {
     if (usuarioMarker == null) {
         var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|00FF00",
             new google.maps.Size(21, 34),
