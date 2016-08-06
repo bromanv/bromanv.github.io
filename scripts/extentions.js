@@ -1,7 +1,8 @@
 /*********************************************************/
 /****************        google.maps       ***************/
 /*********************************************************/
-
+function cargarExtGoogle()
+{
 google.maps.Marker.prototype.transition = function(result) {
 
     result.tsMark = Math.floor(Date.now() / 1000);
@@ -10,7 +11,7 @@ google.maps.Marker.prototype.transition = function(result) {
     if (this.funqueue.length == 1) {
         this.transitionProcess(result);
     }
-}
+};
 
 google.maps.Marker.prototype.transitionProcess = function(result) {
     this.i = 0;
@@ -23,7 +24,7 @@ google.maps.Marker.prototype.transitionProcess = function(result) {
         this.i = this.numDeltas - 10;
     }
     this.moveMarker();
-}
+};
 
 google.maps.Marker.prototype.moveMarker = function() {
     var lat1 = this.position.lat() + this.deltaLat;
@@ -39,4 +40,5 @@ google.maps.Marker.prototype.moveMarker = function() {
         if (this.funqueue.length > 0)
             this.transitionProcess(this.funqueue[0]);
     }
+};
 }
