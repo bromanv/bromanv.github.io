@@ -2,8 +2,11 @@ var map;
 var markers = [];
 var bounds;
 var pinShadow;
+
 var busA;
 var usuarioMarker = null;
+var infowindow;
+
 $(document).ready(function() {
     var mpConfig = {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -12,7 +15,8 @@ $(document).ready(function() {
         streetViewControl: false,
     };
     cargarExtGoogle();
-    $("#map_canvas").height($("#main").height()-$("header").height()-$("footer").height());
+	infowindow = new google.maps.InfoWindow();
+    $("#map_canvas").height($("#main").height()-$("header").height()-$("footer").height()-2);
 
     bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map_canvas"), mpConfig);
@@ -73,7 +77,10 @@ function dibujarPin(ruta, rutaLinea) {
             icon: pinImage,
             shadow: pinShadow
         });
-
+		google.maps.event.addListener(marker, "click", function(evt) {  
+			infowindow.setContent(this.get('title'));
+			infowindow.open(map,this);
+		});
         rutaLinea.markers.push(marker);
     }
 }

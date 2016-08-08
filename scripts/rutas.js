@@ -1,26 +1,26 @@
 var listaRutas ={  
    "rutas":[  
       {  
-         "nombre":"Ciudad de la Investigación",
+         "nombre":"Ciudad de la Investigaci&oacute;n",
          "color":"#21538b",
 		 "pinColor":"21538b",
 		 "strokeWeight":5,
          "estaciones":[  
             {  
                "orden":1,
-               "nombre":"Facultad de Educación",
+               "nombre":"Facultad de Educaci&oacute;n",
                "lat":9.935542667088216,
                "lng":-84.04889119510653
             },
             {  
                "orden":2,
-               "nombre":"Facultad de Odontología",
+               "nombre":"Facultad de Odontolog&iacute;a",
                "lat":9.938527997544483,
                "lng":-84.05183481216432
             },
             {  
                "orden":3,
-               "nombre":"Facultad de Microbiología",
+               "nombre":"Facultad de Microbiolog&iacute;a",
                "lat":9.93843708114055,
                "lng":-84.0489348121643
             },
@@ -32,7 +32,7 @@ var listaRutas ={
             },
             {  
                "orden":5,
-               "nombre":"Calle posterior, facultad de Ingeniería Electrica",
+               "nombre":"Calle posterior, facultad de Ingenier&iacute;a Electrica",
                "lat":9.937767999636753,
                "lng":-84.04398316001891
             },
@@ -54,19 +54,19 @@ var listaRutas ={
          "estaciones":[  
             {  
                "orden":1,
-               "nombre":"Facultad de Ingeniería",
+               "nombre":"Facultad de Ingenier&iacute;a",
                "lat":9.935484543467203,
                "lng":-84.05195964221957
             },
             {  
                "orden":2,
-               "nombre":"Facultad de Odontología",
+               "nombre":"Facultad de Odontolog&iacute;a",
                "lat":9.938527997544483,
                "lng":-84.05183481216432
             },
             {  
                "orden":3,
-               "nombre":"Facultad de Microbiología",
+               "nombre":"Facultad de Microbiolog&iacute;a",
                "lat":9.93843708114055,
                "lng":-84.0489348121643
             },
@@ -78,25 +78,25 @@ var listaRutas ={
             },
             {  
                "orden":5,
-               "nombre":"Calle posterior, facultad de Ingeniería Electrica",
+               "nombre":"Calle posterior, facultad de Ingenier&iacute;a Electrica",
                "lat":9.937767999636753,
                "lng":-84.04398316001891
             },
 			{  
                "orden":6,
-               "nombre":"Escuela de Nutrición",
+               "nombre":"Escuela de Nutrici&oacute;n",
                "lat":9.939247004011028,
                "lng":-84.04465224075318
             },			
             {  
                "orden":7,
-               "nombre":"Auditorio Ciudad de la Investigación",
+               "nombre":"Auditorio Ciudad de la Investigaci&oacute;n",
                "lat":9.939210240324263,
                "lng":-84.04422670898424
             },			
             {  
                "orden":8,
-               "nombre":"Instalaciones Deportivas Estadio Ecológico",
+               "nombre":"Instalaciones Deportivas Estadio Ecol&oacute;gico",
                "lat":9.943643972811753,
                "lng":-84.04441620635987
             }
