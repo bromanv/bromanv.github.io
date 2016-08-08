@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
-
+    
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
     <script type="text/javascript" src="//code.jquery.com/jquery-3.1.0.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyCoIqRRaVp_q-86EnzpBKlSVz4YmwWp3GA&libraries=geometry"></script>
 	
     <script type="text/javascript" src="scripts/rutas.js"></script>
@@ -20,8 +22,19 @@
 </head>
 
 <body>
-    <div id="map_canvas" class="google-map"></div>
-    <button style="position: absolute; top: 100px;  z-index: 100000000;" id="btnHola">hola</button>
+	<header>
+      <div class="baseBarras">
+	  <img src="http://bus.ucr.ac.cr/businterno/resources/images/firma-ucr.png" alt="Universidad de Costa Rica"/>
+	  </div>
+    </header>
+	<div class="container container-full" id="main">
+		<div id="map_canvas" class="google-map"></div>
+	</div>	
+	<footer class="footer">
+      <div class="container baseBarras container-full">
+        <span class="text-muted"></span>
+      </div>
+    </footer>
 </body>
 
 </html>

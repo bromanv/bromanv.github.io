@@ -12,7 +12,7 @@ $(document).ready(function() {
         streetViewControl: false,
     };
     cargarExtGoogle();
-    $("#map_canvas").height($("body").height() - 20);
+    $("#map_canvas").height($("#main").height()-$("header").height()-$("footer").height());
 
     bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map_canvas"), mpConfig);
