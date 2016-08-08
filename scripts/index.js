@@ -58,11 +58,7 @@ $(document).ready(function() {
 
 
 function dibujarPin(ruta, rutaLinea) {
-    var pinColor = ruta.pinColor;
-    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(10, 34));
+    var pinColor = ruta.pinColor;    
     rutaLinea.markers = [];
     for (estaIdx in ruta.estaciones) {
         var estacion = ruta.estaciones[estaIdx];
@@ -74,8 +70,12 @@ function dibujarPin(ruta, rutaLinea) {
             map: map,
             title: estacion.nombre,
             draggable: false,
-            icon: pinImage,
-            shadow: pinShadow
+            icon: new google.maps.MarkerImage("img/"+(estacion.compartida?estacion.imgC:estacion.img), //"http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+												new google.maps.Size(24, 29),
+												new google.maps.Point(0, 0),
+												new google.maps.Point(10, 34)),
+            shadow: pinShadow,
+			estacion:estacion
         });
 		google.maps.event.addListener(marker, "click", function(evt) {  
 			infowindow.setContent(this.get('title'));
