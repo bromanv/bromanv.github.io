@@ -9,10 +9,9 @@ var mapaUcr = (function() {
             trackUserLocation: function(showPosition, onError) {
                 this.showPosition = showPosition;
                 this.onError = onError;
-                this.tracker = setInterval(function() {
-                    debugger;
+                this.tracker = setInterval(function() {                    
                     mapaUcr.getInstance().getLocation();
-                }, 3000);
+                }, 1500);
             },
 
             getLocation: function() {

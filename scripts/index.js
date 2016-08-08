@@ -1,5 +1,4 @@
 var map;
-var l = [];
 var markers = [];
 var bounds;
 var pinShadow;
@@ -38,11 +37,13 @@ $(document).ready(function() {
         pinColor: listaRutas.rutas[rutaIdx].pinColor,
         lat: listaRutas.rutas[rutaIdx].estaciones[0].lat,
         lng: listaRutas.rutas[rutaIdx].estaciones[0].lng,
-        nombre: "lata 1"
+        nombre: "lata 1",
+		ruta:listaRutas.rutas[0]
     });
 
     //Estaciones
     for (r in listaRutas.rutas[rutaIdx].puntos) {
+		if(r>120)
         busA.transition(new google.maps.LatLng({
             lat: listaRutas.rutas[rutaIdx].puntos[r].lat,
             lng: listaRutas.rutas[rutaIdx].puntos[r].lng
@@ -91,7 +92,8 @@ function dibujarRuta(ruta) {
     });
 
     rutaLinea.setMap(map);
-    l.push(rutaLinea);
+	ruta.trazo = rutaLinea; 
+	
     for (punto in ruta.puntos)
         bounds.extend(new google.maps.LatLng({
             lat: ruta.puntos[punto].lat,
@@ -125,20 +127,23 @@ function configureBus(bus) {
     marker.deltaLat = 0;
     marker.deltaLng = 0;
     marker.funqueue = [];
+	marker.ruta=bus.ruta;
     return marker;
 }
 
 function showUserLocation(position) {
+	var d= new Date();
+	var dividir=100000;
     if (usuarioMarker == null) {
-        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=bus|00FF00",
+        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_icon&chld=glyphish_walk|00FF00",
             new google.maps.Size(21, 34),
             new google.maps.Point(0, 0),
             new google.maps.Point(10, 34));
-
+		
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                lat: 9.9369079 +d.getSeconds()/dividir ,//position.coords.latitude,
+                lng: -84.0501299 +d.getSeconds()/dividir//position.coords.longitude
             }),
             map: map,
             draggable: false,
@@ -155,8 +160,8 @@ function showUserLocation(position) {
         usuarioMarker = marker;
     } else {
         usuarioMarker.transition(new google.maps.LatLng({
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lat: 9.9369079 +d.getSeconds()/dividir,//position.coords.latitude,
+            lng:  -84.0501299 +d.getSeconds()/dividir//position.coords.longitude
         }));
     }
 }

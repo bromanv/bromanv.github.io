@@ -19,9 +19,17 @@ google.maps.Marker.prototype.transitionProcess = function(result) {
         this.deltaLat = (result.lat() - this.position.lat()) / this.numDeltas;
         this.deltaLng = (result.lng() - this.position.lng()) / this.numDeltas;
     } else {
-        this.deltaLat = (result.lat() - this.position.lat()) / 10;
-        this.deltaLng = (result.lng() - this.position.lng()) / 10;
-        this.i = this.numDeltas - 10;
+		if (Math.abs(result.tsMark - Math.floor(Date.now() / 1000)) < 10) {
+			this.deltaLat = (result.lat() - this.position.lat()) / 10;
+			this.deltaLng = (result.lng() - this.position.lng()) / 10;		
+			this.i = this.numDeltas - 10;
+		}
+		else
+		{
+			this.deltaLat = (result.lat() - this.position.lat());
+			this.deltaLng = (result.lng() - this.position.lng());		
+			this.i =  this.numDeltas;
+		}
     }
     this.moveMarker();
 };
@@ -31,6 +39,25 @@ google.maps.Marker.prototype.moveMarker = function() {
     var lon1 = this.position.lng() + this.deltaLng;
     var latlng1 = new google.maps.LatLng(lat1, lon1);
     this.setPosition(latlng1);
+	if(((this.ruta != undefined) &&(this.ruta != null) ) &&
+	   ((this.ruta.trazo != undefined) &&(this.ruta.trazo != null) ))
+	{
+		var enRuta = google.maps.geometry.poly.isLocationOnEdge(latlng1, this.ruta.trazo,0.000125) ;
+		var icon=this.getIcon();
+		var currentIconUrl = icon.url;
+		if(enRuta)
+		{
+			icon.url=icon.url.replace("ff0000","f59f2b").replace("repair","bus");//this.ruta.pinColor);
+		}
+		else
+		{			
+			icon.url=icon.url.replace("f59f2b","ff0000").replace("bus","repair");//(this.ruta.pinColor,"ffffff");
+		}
+		if(currentIconUrl!= icon.url)
+		{
+			this.setIcon(icon)
+		}
+	}	  
     if (this.i != this.numDeltas) {
         this.i++;
         var self = this;
